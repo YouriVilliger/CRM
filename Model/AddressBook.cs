@@ -10,9 +10,25 @@ namespace CRM
         #endregion private attibutes
 
         #region public methods
-        public void AddContact(Contact contactToAdd)
+        public void AddContacts(List<Contact> ListToAdd)
         {
-            _contacts.Add(contactToAdd);
+
+            foreach (Contact ContactToAdd in ListToAdd)
+            {
+                if (!DoesExist(ContactToAdd)){
+                    _contacts.Add(ContactToAdd);
+                }
+                else
+                {
+                    throw new ContactAlreadyExist();
+                }
+                
+            }
+        }
+
+        public bool DoesExist(Contact contactToCheck)
+        {
+           return _contacts.Contains(contactToCheck);
         }
 
         public List<Contact> Contacts
@@ -22,6 +38,9 @@ namespace CRM
                 return _contacts;
             }
         }
+
+        public class ContactAlreadyExist : Exception { }
+
         #endregion public methods
     }
 }
