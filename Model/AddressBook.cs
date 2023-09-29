@@ -39,7 +39,21 @@ namespace CRM
             }
         }
 
+        public void Remove(Contact contact)
+        {
+            if (DoesExist(contact))
+            {
+                _contacts.Remove(contact);
+            }
+            else
+            {
+                throw new ContactNotExist();
+            }
+        }
+
         public class ContactAlreadyExist : Exception { }
+
+        public class ContactNotExist : Exception { }
 
         #endregion public methods
     }
