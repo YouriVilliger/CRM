@@ -47,13 +47,13 @@ namespace CRM
             }
             else
             {
-                throw new ContactNotExist();
+                throw new RemoveFailedException();
             }
         }
 
         public class ContactAlreadyExist : Exception { }
 
-        public class ContactNotExist : Exception { }
+        public class RemoveFailedException : Exception { }
 
         #endregion public methods
     }

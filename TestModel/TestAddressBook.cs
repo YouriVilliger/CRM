@@ -113,7 +113,6 @@ namespace CRM
             _addressBook.AddContacts(new List<Contact> { astier });
 
             //when
-            //when
             Assert.Throws<RemoveFailedException>(() => _addressBook.Remove(gauthier));
 
 
